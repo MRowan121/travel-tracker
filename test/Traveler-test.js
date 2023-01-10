@@ -26,8 +26,8 @@ describe("traveler", () => {
         ];
 
         traveler1 = new Traveler(travelerData[0])
-        traveler1 = new Traveler(travelerData[1])
-        traveler1 = new Traveler(travelerData[2])
+        traveler2 = new Traveler(travelerData[1])
+        traveler3 = new Traveler(travelerData[2])
     });
 
     it.skip("should be a function", () => {
