@@ -30,29 +30,29 @@ describe("traveler", () => {
         traveler3 = new Traveler(travelerData[2])
     });
 
-    it.skip("should be a function", () => {
+    it("should be a function", () => {
         expect(Traveler).to.be.a('function')
     });
 
-    it.skip("should be an instance of traveler", () => {
+    it("should be an instance of traveler", () => {
         expect(traveler1).to.be.an.instanceOf(Traveler);
         expect(traveler2).to.be.an.instanceOf(Traveler);
         expect(traveler3).to.be.an.instanceOf(Traveler);
     });
 
-    it.skip("should have an id", () => {
+    it("should have an id", () => {
         expect(traveler1.id).to.equal(1)
     });
 
-    it.skip("should have a name", () => {
+    it("should have a name", () => {
         expect(traveler1.name).to.equal('Ham Leadbeater')
     });
 
-    it.skip("should have a type", () => {
+    it("should have a type", () => {
         expect(traveler1.travelerType).to.equal('relaxer')
     });
 
-    it.skip("should have a method to return the travelers first name only", () => {
+    it("should have a method to return the travelers first name only", () => {
         expect(traveler1.getFirstName()).to.equal('Ham')
     });
 })
