@@ -145,7 +145,7 @@ describe("trips", () => {
     });
 
     it.skip("should be able to return traveler name", () => {
-        trip3.getTravelerInfo()
+        trip3.getTravelerInfo(travelerData)
         expect(trip3.travelerName).to.equal('Sibby Dawidowit.skipsch')
     });
 
