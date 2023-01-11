@@ -150,32 +150,27 @@ describe("trips", () => {
         expect(trip3.travelerName).to.equal('Sibby Dawidowit.skipsch')
     });
 
-    it.skip("should be able to return the name of the destination", () => {
+    it("should be able to return the name of the destination", () => {
         trip3.getDestinationInfo(destinationData)
         expect(trip3.destinationName).to.equal('Rome, Italy')
     });
 
-    it.skip("should be able to get flight cost per person", () => {
+    it("should be able to get flight cost per person", () => {
         trip3.getDestinationInfo(destinationData)
         expect(trip3.estimatedFlightCostPerPerson).to.equal(650)
     });
 
-    it.skip("should be able to return lodging per person per day", () => {
+    it("should be able to return lodging per person per day", () => {
         trip3.getDestinationInfo(destinationData)
         expect(trip3.estimatedLodgingCostPerDay).to.equal(90)
     });
 
-    it.skip("should be able to calc total cost of lodging per person", () => {
+    it("should be able to calc total cost of lodging per person", () => {
         trip3.getDestinationInfo(destinationData)
         expect(trip3.getTotalLodging()).to.equal(1530)
     });
 
-    it.skip("should be able to calc total cost of the trip per person", () => {
-        trip3.getDestinationInfo(destinationData)
-        expect(trip3.getTotalCost()).to.equal(2180)
-    });
-
-    it.skip("should add 10% agent fee to the total cost", () => {
+    it("should be able to calc total cost per person + 10% agent fee", () => {
         trip3.getDestinationInfo(destinationData)
         expect(trip3.getTotalCost()).to.equal(2398)
     });
