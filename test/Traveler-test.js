@@ -1,5 +1,5 @@
 import { expect } from "chai";
-const Traveler = require("../src/Traveler")
+import Traveler from "../src/Traveler";
 
 describe("traveler", () => {
     let traveler1;
