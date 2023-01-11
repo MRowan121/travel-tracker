@@ -10,4 +10,4 @@ class Traveler {
     };
 };
 
-module.exports = Traveler;
+export default Traveler;
