@@ -10,7 +10,15 @@ class Trips {
         this.duration = tripDetails.duration;
         this.status = tripDetails.status;
         this.suggestedActivities = tripDetails.suggestedActivities;
-    }
+    };
+
+    getTravelerInfo(travelerData) {
+        travelerData.find(traveler => {
+            if(traveler.id === this.userID) {
+                this.travelerName = traveler.name
+            };
+        });
+    };
 };
 
 export default Trips;
