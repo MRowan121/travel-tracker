@@ -19,6 +19,14 @@ class Trips {
             };
         });
     };
+
+    getDestinationInfo(destinationData) {
+        destinationData.find(destination => {
+            if(destination.id === this.destinationID) {
+                this.destinationName = destination.destination
+            };
+        });
+    };
 };
 
 export default Trips;
