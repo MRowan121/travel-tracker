@@ -45,6 +45,24 @@ describe("trips", () => {
         trip2 = new Trips(tripData[1])
         trip3 = new Trips(tripData[2])
 
+        travelerData = [
+            {
+                id: 1,
+                name: "Ham Leadbeater",
+                travelerType: "relaxer"
+            },
+            {
+                id: 2,
+                name: "Rachael Vaughten",
+                travelerType: "thrill-seeker"
+            },
+            {
+                id: 3,
+                name: "Sibby Dawidowit.skipsch",
+                travelerType: "shopper"
+            },
+        ];
+
         destinationData = [
             {
               id: 1,
@@ -127,7 +145,8 @@ describe("trips", () => {
     });
 
     it.skip("should be able to return traveler name", () => {
-        expect(trip3.getTravelerName()).to.equal('Sibby Dawidowit.skipsch')
+        trip3.getTravelerInfo()
+        expect(trip3.travelerName).to.equal('Sibby Dawidowit.skipsch')
     });
 
     it.skip("should be able to return the name of the destination", () => {
