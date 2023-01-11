@@ -23,7 +23,9 @@ class Trips {
     getDestinationInfo(destinationData) {
         destinationData.find(destination => {
             if(destination.id === this.destinationID) {
-                this.destinationName = destination.destination
+                this.destinationName = destination.destination;
+                this.estimatedFlightCostPerPerson = destination.estimatedFlightCostPerPerson;
+                this.estimatedLodgingCostPerDay = destination.estimatedLodgingCostPerDay;
             };
         });
     };
