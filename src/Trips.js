@@ -29,6 +29,10 @@ class Trips {
             };
         });
     };
+
+    getTotalLodging() {
+        return this.estimatedLodgingCostPerDay * this.duration
+    }
 };
 
 export default Trips;
