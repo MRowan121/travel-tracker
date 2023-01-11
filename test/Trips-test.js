@@ -1,11 +1,12 @@
 import { expect } from "chai";
-import Trips from '../src/Trips'
+import Trips from '../src/Trips';
 
 describe("trips", () => {
     let trip1;
     let trip2;
     let trip3;
     let tripData;
+    let destinationData
     beforeEach(() => {
         tripData = [
             {
@@ -43,6 +44,41 @@ describe("trips", () => {
         trip1 = new Trips(tripData[0])
         trip2 = new Trips(tripData[1])
         trip3 = new Trips(tripData[2])
+
+        destinationData = [
+            {
+              id: 1,
+              destination: "Lima, Peru",
+              estimatedLodgingCostPerDay: 70,
+              estimatedFlightCostPerPerson: 400,
+              image: "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+              alt: "overview of city buildings with a clear sky"
+            },
+            {
+              id: 2,
+              destination: "Stockholm, Sweden",
+              estimatedLodgingCostPerDay: 100,
+              estimatedFlightCostPerPerson: 780,
+              image: "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+              alt: "city with boats on the water during the day time"
+            },
+            {
+              id: 3,
+              destination: "Sydney, Austrailia",
+              estimatedLodgingCostPerDay: 130,
+              estimatedFlightCostPerPerson: 950,
+              image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+              alt: "opera house and city buildings on the water with boats"
+            },
+            {
+              id: 22,
+              destination: "Rome, Italy",
+              estimatedLodgingCostPerDay: 90,
+              estimatedFlightCostPerPerson: 650,
+              image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+              alt: "people standing inside a colosseum during the day"
+            },
+        ];
     });
 
     it("should be a function", () => {
@@ -95,22 +131,32 @@ describe("trips", () => {
     });
 
     it.skip("should be able to return the name of the destination", () => {
-        expect(trip3.getDestinationName()).to.equal('Rome, Italy')
+        trip3.getDestinationInfo(destinationData)
+        expect(trip3.destinationName).to.equal('Rome, Italy')
     });
 
     it.skip("should be able to get flight cost per person", () => {
-        expect(trip3.getFlightCost()).to.equal(650)
+        trip3.getDestinationInfo(destinationData)
+        expect(trip3.estimatedFlightCostPerPerson).to.equal(650)
     });
 
-    it.skip("should be able to calc total lodging per person", () => {
-        expect(trip3.getLodgingCost()).to.equal(1530)
+    it.skip("should be able to return lodging per person per day", () => {
+        trip3.getDestinationInfo(destinationData)
+        expect(trip3.estimatedLodgingCostPerDay).to.equal(90)
+    });
+
+    it.skip("should be able to calc total cost of lodging per person", () => {
+        trip3.getDestinationInfo(destinationData)
+        expect(trip3.getTotalLodging()).to.equal(1530)
     });
 
     it.skip("should be able to calc total cost of the trip per person", () => {
+        trip3.getDestinationInfo(destinationData)
         expect(trip3.getTotalCost()).to.equal(2180)
     });
 
-    it.skip("should add 10% agent fee to the total cost", () =>{
+    it.skip("should add 10% agent fee to the total cost", () => {
+        trip3.getDestinationInfo(destinationData)
         expect(trip3.getTotalCost()).to.equal(2398)
     });
 });
