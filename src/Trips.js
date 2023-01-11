@@ -36,7 +36,7 @@ class Trips {
 
     getTotalCost() {
         let totalLodging = this.getTotalLodging();
-        let totalCost = totalLodging + this.estimatedFlightCostPerPerson;
+        let totalCost = (totalLodging + this.estimatedFlightCostPerPerson) * 1.10;
         return totalCost;
     };
 };
