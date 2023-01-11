@@ -40,19 +40,19 @@ describe("trips", () => {
             },
         ];
 
-        trip1 = new Trip(tripData[0])
-        trip2 = new Trip(tripData[1])
-        trip3 = new Trip(tripData[2])
+        trip1 = new Trips(tripData[0])
+        trip2 = new Trips(tripData[1])
+        trip3 = new Trips(tripData[2])
     });
 
     it.skip("should be a function", () => {
-        expect(Trip).to.be.a('function')
+        expect(Trips).to.be.a('function')
     });
 
     it.skip("should be an instance of traveler", () => {
-        expect(trip1).to.be.an.instanceOf(Trip);
-        expect(trip2).to.be.an.instanceOf(Trip);
-        expect(trip3).to.be.an.instanceOf(Trip);
+        expect(trip1).to.be.an.instanceOf(Trips);
+        expect(trip2).to.be.an.instanceOf(Trips);
+        expect(trip3).to.be.an.instanceOf(Trips);
     });
 
     it.skip("should have a id", () => {
