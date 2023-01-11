@@ -1,5 +1,4 @@
 import { expect } from "chai";
-import dayjs from 'dayjs'
 import Trips from '../src/Trips'
 
 describe("trips", () => {
@@ -74,20 +73,20 @@ describe("trips", () => {
 
     it("should have a date", () => {
         expect(trip1.date.month()+1).to.equal(9)
+        expect(trip1.date.date()).to.equal(16)
         expect(trip1.date.year()).to.equal(2022)
         expect(trip2.date.month()+1).to.equal(10)
-        expect(trip3.date.month()+1).to.equal(5)
     });
 
-    it.skip("should have a duration", () => {
+    it("should have a duration", () => {
         expect(trip1.duration).to.equal(8)
     });
 
-    it.skip("should have an approval status", () => {
+    it("should have an approval status", () => {
         expect(trip1.status).to.equal("approved")
     });
 
-    it.skip("should have suggested activities array", () => {
+    it("should have suggested activities array", () => {
         expect(trip1.suggestedActivities).to.deep.equal([])
     });
 });
