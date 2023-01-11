@@ -7,6 +7,7 @@ describe("trips", () => {
     let trip3;
     let tripData;
     let destinationData
+    let travelerData
     beforeEach(() => {
         tripData = [
             {
@@ -144,7 +145,7 @@ describe("trips", () => {
         expect(trip1.suggestedActivities).to.deep.equal([])
     });
 
-    it.skip("should be able to return traveler name", () => {
+    it("should be able to return traveler name", () => {
         trip3.getTravelerInfo(travelerData)
         expect(trip3.travelerName).to.equal('Sibby Dawidowit.skipsch')
     });
