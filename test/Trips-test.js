@@ -1,5 +1,6 @@
 import { expect } from "chai";
-const Trips = require("../src/Trips")
+import dayjs from 'dayjs'
+import Trips from '../src/Trips'
 
 describe("trips", () => {
     let trip1;
@@ -45,34 +46,37 @@ describe("trips", () => {
         trip3 = new Trips(tripData[2])
     });
 
-    it.skip("should be a function", () => {
+    it("should be a function", () => {
         expect(Trips).to.be.a('function')
     });
 
-    it.skip("should be an instance of traveler", () => {
+    it("should be an instance of traveler", () => {
         expect(trip1).to.be.an.instanceOf(Trips);
         expect(trip2).to.be.an.instanceOf(Trips);
         expect(trip3).to.be.an.instanceOf(Trips);
     });
 
-    it.skip("should have a id", () => {
+    it("should have a id", () => {
         expect(trip1.id).to.equal(1)
     });
 
-    it.skip("should have a user id", () => {
+    it("should have a user id", () => {
         expect(trip1.userID).to.equal(44)
     });
 
-    it.skip("should have a destination id", () => {
+    it("should have a destination id", () => {
         expect(trip1.destinationID).to.equal(49)
     });
 
-    it.skip("should know how many travelers are on the trip", () => {
+    it("should know how many travelers are on the trip", () => {
         expect(trip1.travelers).to.equal(1)
     });
 
-    it.skip("should have a date", () => {
-        expect(trip1.date()).to.equal("2022/09/16")
+    it("should have a date", () => {
+        expect(trip1.date.month()+1).to.equal(9)
+        expect(trip1.date.year()).to.equal(2022)
+        expect(trip2.date.month()+1).to.equal(10)
+        expect(trip3.date.month()+1).to.equal(5)
     });
 
     it.skip("should have a duration", () => {
