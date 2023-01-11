@@ -32,7 +32,13 @@ class Trips {
 
     getTotalLodging() {
         return this.estimatedLodgingCostPerDay * this.duration
-    }
+    };
+
+    getTotalCost() {
+        let totalLodging = this.getTotalLodging();
+        let totalCost = totalLodging + this.estimatedFlightCostPerPerson;
+        return totalCost;
+    };
 };
 
 export default Trips;
