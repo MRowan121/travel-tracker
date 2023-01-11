@@ -49,38 +49,38 @@ describe("destinations", () => {
         destination4 = new Destinations(destinationData[3])
     });
 
-    it.skip("should be a function", () => {
+    it("should be a function", () => {
         expect(Destinations).to.be.a('function')
     });
 
-    it.skip("should be an instance of destinations", () => {
+    it("should be an instance of destinations", () => {
         expect(destination1).to.be.an.instanceOf(Destinations)
         expect(destination2).to.be.an.instanceOf(Destinations)
         expect(destination3).to.be.an.instanceOf(Destinations)
         expect(destination4).to.be.an.instanceOf(Destinations)
     });
 
-    it.skip("should have an id", () => {
+    it("should have an id", () => {
         expect(destination4.id).to.equal(22)
     });
 
-    it.skip("should have a destination", () => {
+    it("should have a destination", () => {
         expect(destination4.destination).to.equal('Rome, Italy')
     });
 
-    it.skip("should have estimated loding per day", () => {
+    it("should have estimated loding per day", () => {
         expect(destination4.estimatedLodgingCostPerDay).to.equal(90)
     });
 
-    it.skip("should have estimated flight cost per person", () => {
+    it("should have estimated flight cost per person", () => {
         expect(destination4.estimatedFlightCostPerPerson).to.equal(650)
     });
 
-    it.skip("should have an image of the desitnation", () => {
+    it("should have an image of the desitnation", () => {
         expect(destination4.image).to.equal('https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')
     });
 
-    it.skip("should have alt text for the image", () => {
+    it("should have alt text for the image", () => {
         expect(destination4.alt).to.equal('people standing inside a colosseum during the day')
     });
 });
