@@ -37,7 +37,15 @@ class Traveler {
             return total
         }, 0)
         return totalLodging
-    }
+    };
+
+    getTotalAirfare() {
+        const totalAirfare = this.tripHistory.reduce((total, trip) => {
+            total += trip.estimatedFlightCostPerPerson
+            return total
+        }, 0)
+        return totalAirfare
+    };
 };
 
 export default Traveler;
