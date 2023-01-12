@@ -16,6 +16,20 @@ class Traveler {
             return {... trip, date: dayjs(trip.date)}
         })
     };
+
+    addDestinationInfo(destinationData) {
+        this.tripHistory.forEach(trip => {
+            destinationData.find(destination => {
+                if(destination.id === trip.destinationID) {
+                    trip.destinationName = destination.destination;
+                    trip.estimatedFlightCostPerPerson = destination.estimatedFlightCostPerPerson;
+                    trip.estimatedLodgingCostPerDay = destination.estimatedLodgingCostPerDay;
+                    trip.image = destination.image;
+                    trip.alt = destination.alt;
+                }
+            })
+        })
+    };
 };
 
 export default Traveler;
