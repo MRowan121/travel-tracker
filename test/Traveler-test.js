@@ -6,6 +6,8 @@ describe("traveler", () => {
     let traveler2;
     let traveler3;
     let travelerData;
+    let tripData;
+    let destinationData;
     beforeEach(() => {
         travelerData = [
             {
@@ -28,6 +30,92 @@ describe("traveler", () => {
         traveler1 = new Traveler(travelerData[0])
         traveler2 = new Traveler(travelerData[1])
         traveler3 = new Traveler(travelerData[2])
+
+        tripData = [
+            {
+              id: 1,
+              userID: 44,
+              destinationID: 49,
+              travelers: 1,
+              date: "2022/09/16",
+              duration: 8,
+              status: "approved",
+              suggestedActivities: [ ]
+            },
+            {
+              id: 2,
+              userID: 35,
+              destinationID: 25,
+              travelers: 5,
+              date: "2022/10/04",
+              duration: 18,
+              status: "approved",
+              suggestedActivities: [ ]
+            },
+            {
+              id: 3,
+              userID: 3,
+              destinationID: 22,
+              travelers: 4,
+              date: "2022/05/22",
+              duration: 17,
+              status: "approved",
+              suggestedActivities: [ ]
+            },
+            {
+                id: 41,
+                userID: 3,
+                destinationID: 25,
+                travelers: 3,
+                date: "2020/08/30",
+                duration: 11,
+                status: "approved",
+                suggestedActivities: [ ]
+            },
+        ];
+
+        destinationData = [
+            {
+                id: 1,
+                destination: "Lima, Peru",
+                estimatedLodgingCostPerDay: 70,
+                estimatedFlightCostPerPerson: 400,
+                image: "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+                alt: "overview of city buildings with a clear sky"
+            },
+            {
+                id: 2,
+                destination: "Stockholm, Sweden",
+                estimatedLodgingCostPerDay: 100,
+                estimatedFlightCostPerPerson: 780,
+                image: "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+                alt: "city with boats on the water during the day time"
+            },
+            {
+                id: 3,
+                destination: "Sydney, Austrailia",
+                estimatedLodgingCostPerDay: 130,
+                estimatedFlightCostPerPerson: 950,
+                image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+                alt: "opera house and city buildings on the water with boats"
+            },
+            {
+                id: 22,
+                destination: "Rome, Italy",
+                estimatedLodgingCostPerDay: 90,
+                estimatedFlightCostPerPerson: 650,
+                image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+                alt: "people standing inside a colosseum during the day"
+            },
+            {
+                id: 25,
+                destination: "New York, New York",
+                estimatedLodgingCostPerDay: 175,
+                estimatedFlightCostPerPerson: 200,
+                image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+                alt: "people crossing the street during the day surrounded by tall buildings and advertisements"
+            },
+        ];
     });
 
     it("should be a function", () => {
