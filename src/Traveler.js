@@ -46,6 +46,11 @@ class Traveler {
         }, 0)
         return totalAirfare
     };
+
+    getTotalCost() {
+        const totalCost = (this.getTotalLodging() + this.getTotalAirfare()) * 1.10
+        return totalCost
+    }
 };
 
 export default Traveler;
