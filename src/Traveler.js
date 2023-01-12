@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 class Traveler {
     constructor(travelerInfo) {
         this.id = travelerInfo.id;
@@ -7,6 +9,12 @@ class Traveler {
 
     getFirstName() {
         return this.name.split(" ")[0];
+    };
+
+    getTrips(tripData) {
+        this.tripHistory = tripData.filter(trip => trip.userID === this.id).map(trip => {
+            return {... trip, date: dayjs(trip.date)}
+        })
     };
 };
 
