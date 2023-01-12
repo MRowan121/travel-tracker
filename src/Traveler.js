@@ -30,6 +30,14 @@ class Traveler {
             })
         })
     };
+
+    getTotalLodging() {
+        const totalLodging = this.tripHistory.reduce((total, trip) => {
+            total += (trip.duration * trip.estimatedLodgingCostPerDay)
+            return total
+        }, 0)
+        return totalLodging
+    }
 };
 
 export default Traveler;
