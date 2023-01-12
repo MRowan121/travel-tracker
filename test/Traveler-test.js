@@ -144,32 +144,32 @@ describe("traveler", () => {
         expect(traveler1.getFirstName()).to.equal('Ham')
     });
 
-    it.skip("should have a method that returns all of a users trips", () => {
+    it("should have a method that returns all of a users trips", () => {
         traveler3.getTrips(tripData)
         expect(traveler3.tripHistory.length).to.equal(2)
         expect(traveler3.tripHistory[0].date.date()).to.equal(22)
     });
 
-    it.skip("should be able to add destination details to each trip" ,() => {
+    it("should be able to add destination details to each trip" ,() => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
         expect(traveler3.tripHistory[0].destinationName).to.equal('Rome, Italy')
         expect(traveler3.tripHistory[1].estimatedFlightCostPerPerson).to.equal(200)
     });
 
-    it.skip("should be able to calc total lodging", () => {
+    it("should be able to calc total lodging", () => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
         expect(traveler3.getTotalLodging()).to.equal(3455)
     });
 
-    it.skip("should be able to calc total airfare", () => {
+    it("should be able to calc total airfare", () => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
         expect(traveler3.getTotalAirfare()).to.equal(850)
     });
 
-    it.skip("should be able to calc total cost with 10% agent fee", () => {
+    it("should be able to calc total cost with 10% agent fee", () => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
         expect(traveler3.getTotalCost()).to.equal(4735.5)
