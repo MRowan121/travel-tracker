@@ -4,10 +4,52 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>Travel Tracker</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <aside id="d1">
+    <div id="userInfo">
+      Pic & Name
+    </div>
+    <ul id="nav">
+      <li>Dashboard</li>
+      <li>Calendar</li>
+      <li>History</li>
+      <li>Stats</li>
+      <li>Chat</li>
+      <li>Settings</li>
+    </ul>
+    <ul id="topDestinations">
+      <li>Top Destination #1</li>
+      <li>Top Destination #2</li>
+      <li>Top Destination #3</li>
+    </ul>
+  </aside>
+  <main id="d2">
+    <h1 id="greeting">Hello, Matt!</h1>
+    <section id="upcomingTrips">
+      Upcoming Trips
+    </section>
+    <section id="bottomMiddle">
+      <div id="pastTrips">
+        Past Trips
+      </div>
+      <div id="pendingTrips">
+        Pending Trips
+      </div>
+    </section>
+  </main>
+  <aside id="d3">
+    <div id="booking">
+      Book New Trip
+    </div>
+    <div id="totalCost">
+      Pie Chart of Cost
+    </div>
+  </aside>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
