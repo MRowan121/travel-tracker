@@ -84,6 +84,20 @@ body {
   width: 40%;
 }
 
+#pastTrips {
+  overflow-y: auto;
+}
+
+#pastTrips > h2 {
+  position: sticky;
+  top: 0;
+}
+
+#oldTripDetails > img {
+  height: 92%;
+  max-width: 100%;
+}
+
 #d3 {
   width: 20vw;
   border: 5px solid black;
