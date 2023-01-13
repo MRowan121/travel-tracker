@@ -14,7 +14,7 @@ import apiCalls from "./apiCalls";
 // Query Selectors
 const greeting = document.querySelector('#greeting');
 const userInfo = document.querySelector('#userInfo')
-const oldTrips = document.querySelector('#oldTripDetails')
+const oldTrips = document.querySelector('#pastDisplay')
 
 
 // Global Variables
