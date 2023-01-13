@@ -14,6 +14,7 @@ import apiCalls from "./apiCalls";
 // Query Selectors
 const greeting = document.querySelector('#greeting');
 const userInfo = document.querySelector('#userInfo')
+const oldTrips = document.querySelector('#oldTripDetails')
 
 
 // Global Variables
@@ -32,6 +33,7 @@ apiCalls.fetchAllData().then((data) => {
     getRandomUser();
     greetUser();
     showUserInfo();
+    showOldTrips(2021);
   });
 
 // Functions
@@ -51,3 +53,13 @@ const greetUser = () => {
 const showUserInfo = () => {
   userInfo.innerHTML = `${traveler.name}`
 };
+
+const showOldTrips = (year) => {
+  const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() < year)
+  console.log(oldTripArray)
+  oldTripArray.forEach(trip => {
+    oldTrips.innerHTML += `
+    <img src="${trip.image}" alt="${trip.alt}"/>
+    <figcaption>${trip.destinationName}</figcaption>`
+  })
+}
