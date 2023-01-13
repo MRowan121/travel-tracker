@@ -14,6 +14,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #2B2C2E;
+  color: #E8E8E9;
 }
 
 .hidden {
@@ -66,8 +68,15 @@ body {
 }
 
 #upcomingTrips {
+  display: flex;
+  flex-direction: column;
   height: 35%;
   width: 85%;
+}
+
+#upcomingDisplay {
+  height: 100%;
+  max-width: 100%;
   border: 3px solid black;
 }
 
@@ -80,12 +89,9 @@ body {
 }
 
 #bottomMiddle > div {
-  border: 3px solid black;
   width: 40%;
-}
-
-#pastTrips {
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 #pastTrips > h2 {
@@ -93,9 +99,22 @@ body {
   top: 0;
 }
 
-#oldTripDetails > img {
+#pastDisplay {
+  height: 100%;
+  max-width: 100%;
+  border: 3px solid black;
+  overflow-y: auto;
+}
+
+#pastDisplay > img {
   height: 92%;
   max-width: 100%;
+}
+
+#pendingDisplay {
+  height: 100%;
+  max-width: 100%;
+  border: 3px solid black;
 }
 
 #d3 {
