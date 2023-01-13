@@ -45,6 +45,23 @@ body {
   list-style: none;
 }
 
+li {
+  padding: 10px;
+  transition: transform 750ms;
+  will-change: transform;
+}
+
+li:hover,
+li:focus {
+  padding: 10px;
+  cursor: pointer;
+  transform: translateX(10px);
+}
+
+i {
+  padding: 5px;
+}
+
 #topDestinations {
   height: 40%;
   width: 75%;
