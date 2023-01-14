@@ -6,21 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c76b60252e.js" crossorigin="anonymous"></script>
   <title>Travel Tracker</title>
 </head>
 <body>
   <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
   <aside id="d1">
-    <div id="userInfo">
-      Pic & Name
-    </div>
     <ul id="nav">
-      <li>Dashboard</li>
-      <li>Calendar</li>
-      <li>History</li>
-      <li>Stats</li>
-      <li>Chat</li>
-      <li>Settings</li>
+      <li><i class="fa-solid fa-house"></i>Dashboard</li>
+      <li><i class="fa-regular fa-calendar"></i>Calendar</li>
+      <li><i class="fa-solid fa-clock-rotate-left"></i>History</li>
+      <li><i class="fa-regular fa-comments"></i>Chat</li>
+      <li><i class="fa-solid fa-gear"></i>Settings</li>
     </ul>
     <ul id="topDestinations">
       <li>Top Destination #1</li>
@@ -31,14 +28,23 @@
   <main id="d2">
     <h1 id="greeting">Hello, Matt!</h1>
     <section id="upcomingTrips">
-      Upcoming Trips
+      <h2>Upcoming Trips</h2>
+      <div id="upcomingDisplay">
+
+      </div>
     </section>
     <section id="bottomMiddle">
       <div id="pastTrips">
-        Past Trips
+        <h2>Past Trips</h2>
+        <div id="pastDisplay">
+
+        </div>
       </div>
       <div id="pendingTrips">
-        Pending Trips
+        <h2>Pending Trips</h2>
+        <div id="pendingDisplay">
+
+        </div>
       </div>
     </section>
   </main>

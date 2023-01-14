@@ -14,6 +14,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #2B2C2E;
+  color: #E8E8E9;
 }
 
 .hidden {
@@ -39,8 +41,28 @@ body {
 #nav {
   height: 40%;
   width: 75%;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+li {
+  padding: 10px;
+  transition: transform 750ms;
+  will-change: transform;
+}
+
+li:hover,
+li:focus {
+  padding: 10px;
+  cursor: pointer;
+  transform: translateX(10px);
+}
+
+i {
+  padding: 5px;
 }
 
 #topDestinations {
@@ -66,8 +88,15 @@ body {
 }
 
 #upcomingTrips {
+  display: flex;
+  flex-direction: column;
   height: 35%;
   width: 85%;
+}
+
+#upcomingDisplay {
+  height: 100%;
+  max-width: 100%;
   border: 3px solid black;
 }
 
@@ -80,8 +109,32 @@ body {
 }
 
 #bottomMiddle > div {
-  border: 3px solid black;
   width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+#pastTrips > h2 {
+  position: sticky;
+  top: 0;
+}
+
+#pastDisplay {
+  height: 100%;
+  max-width: 100%;
+  /* border: 3px solid black; */
+  overflow-y: auto;
+}
+
+#pastDisplay > img {
+  height: 90%;
+  max-width: 100%;
+}
+
+#pendingDisplay {
+  height: 100%;
+  max-width: 100%;
+  border: 3px solid black;
 }
 
 #d3 {

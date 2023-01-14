@@ -14,7 +14,7 @@ class Traveler {
     getTrips(tripData) {
         this.tripHistory = tripData.filter(trip => trip.userID === this.id).map(trip => {
             return {... trip, date: dayjs(trip.date)}
-        })
+        }).sort((a, b) => a.date - b.date)
     };
 
     addDestinationInfo(destinationData) {

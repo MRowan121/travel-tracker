@@ -8,19 +8,53 @@ import './css/styles.css';
 import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
-
+import Traveler from './Traveler';
 import apiCalls from "./apiCalls";
+
+// Query Selectors
+const greeting = document.querySelector('#greeting');
+const userInfo = document.querySelector('#userInfo')
+const oldTrips = document.querySelector('#pastDisplay')
+
 
 // Global Variables
 
 let travelerData;
 let tripData;
 let destinationData;
+let traveler;
 
-// Functions
+// On-Load Functions
 
 apiCalls.fetchAllData().then((data) => {
-    travelerData = data[0].travelerData;
-    tripData = data[1].tripData;
-    destinationData = data[2].destinationData;
+    travelerData = data[0].travelers;
+    tripData = data[1].trips;
+    destinationData = data[2].destinations;
+    getRandomUser();
+    greetUser();
+    showOldTrips(2021);
   });
+
+// Functions
+const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
+
+const getRandomUser = () => {
+  traveler = new Traveler(travelerData[getRandomIndex(travelerData)])
+  traveler.getTrips(tripData)
+  traveler.addDestinationInfo(destinationData)
+  console.log(traveler)
+}
+
+const greetUser = () => {
+  greeting.innerHTML = `Hi, ${traveler.getFirstName()}!`
+};
+
+const showOldTrips = (year) => {
+  const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() < year)
+  console.log(oldTripArray)
+  oldTripArray.forEach(trip => {
+    oldTrips.innerHTML += `
+    <img src="${trip.image}" alt="${trip.alt}"/>
+    <figcaption>${trip.destinationName}</figcaption>`
+  })
+}
