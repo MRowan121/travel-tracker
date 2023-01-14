@@ -32,7 +32,6 @@ apiCalls.fetchAllData().then((data) => {
     destinationData = data[2].destinations;
     getRandomUser();
     greetUser();
-    showUserInfo();
     showOldTrips(2021);
   });
 
@@ -48,10 +47,6 @@ const getRandomUser = () => {
 
 const greetUser = () => {
   greeting.innerHTML = `Hi, ${traveler.getFirstName()}!`
-};
-
-const showUserInfo = () => {
-  userInfo.innerHTML = `${traveler.name}`
 };
 
 const showOldTrips = (year) => {
