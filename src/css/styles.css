@@ -41,8 +41,11 @@ body {
 #nav {
   height: 40%;
   width: 75%;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 li {
@@ -119,12 +122,12 @@ i {
 #pastDisplay {
   height: 100%;
   max-width: 100%;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   overflow-y: auto;
 }
 
 #pastDisplay > img {
-  height: 92%;
+  height: 90%;
   max-width: 100%;
 }
 
