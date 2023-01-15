@@ -13,8 +13,8 @@ import apiCalls from "./apiCalls";
 
 // Query Selectors
 const greeting = document.querySelector('#greeting');
-const userInfo = document.querySelector('#userInfo')
 const oldTrips = document.querySelector('#pastDisplay')
+const upcomingTrips = document.querySelector('#upcomingDisplay')
 
 
 // Global Variables
@@ -32,7 +32,8 @@ apiCalls.fetchAllData().then((data) => {
     destinationData = data[2].destinations;
     getRandomUser();
     greetUser();
-    showOldTrips(2021);
+    showOldTrips(2019);
+    showUpcomingTrips(2020);
   });
 
 // Functions
@@ -50,11 +51,37 @@ const greetUser = () => {
 };
 
 const showOldTrips = (year) => {
-  const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() < year)
+  const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() <= year)
   console.log(oldTripArray)
   oldTripArray.forEach(trip => {
     oldTrips.innerHTML += `
     <img src="${trip.image}" alt="${trip.alt}"/>
     <figcaption>${trip.destinationName}</figcaption>`
+  })
+}
+
+const showUpcomingTrips = (year) => {
+  const upcomingArray = traveler.tripHistory.filter(trip => trip.date.year() === year)
+  console.log(upcomingArray)
+  upcomingArray.forEach(trip => {
+    upcomingTrips.innerHTML += `
+    <div id="upcomingTripInfo">
+    <img src="${trip.image}" alt="${trip.alt}"/>
+    <div id="upcomingDetails">
+    <p><b>Destination Name:</b> 
+    <br>
+    <em>${trip.destinationName}</em></p>
+    <p><b>Departure Date:</b> 
+    <br>
+    <em>${trip.date.format('MM/DD/YYYY')}</em></p>
+    <p><b>Duration:</b> 
+    <br>
+    <em>${trip.duration} days</em></p>
+    <p><b>Travelers:</b> 
+    <br>
+    <em>${trip.travelers}</em></p>
+    </div>
+    </div>
+    `
   })
 }
