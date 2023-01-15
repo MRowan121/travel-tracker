@@ -19,11 +19,6 @@
       <li><i class="fa-regular fa-comments"></i>Chat</li>
       <li><i class="fa-solid fa-gear"></i>Settings</li>
     </ul>
-    <ul id="topDestinations">
-      <li>Top Destination #1</li>
-      <li>Top Destination #2</li>
-      <li>Top Destination #3</li>
-    </ul>
   </aside>
   <main id="d2">
     <h1 id="greeting">Hello, Matt!</h1>
@@ -49,11 +44,26 @@
     </section>
   </main>
   <aside id="d3">
-    <div id="booking">
-      Book New Trip
-    </div>
-    <div id="totalCost">
-      Pie Chart of Cost
+    <form id="newTripForm">
+      <label>Destination:</label>
+      <input type="text">
+      <label>Departure Date:</label>
+      <input type="date">
+      <label>Travelers:</label>
+      <input type="number">
+      <label>Duration:</label>
+      <input type="number">
+      <input type="submit">
+    </form>
+    <div id="costDisplay">
+      <h2><abbr>CY</abbr> Total</h2>
+      <div id="costBreakdown">
+        <p id="flightTotal"></p>
+        <p id="lodgingTotal"></p>
+        <p id="total"></p>
+        <p id="agentFee">10%</p>
+        <p id="grandTotal"></p>
+      </div>
     </div>
   </aside>
   
