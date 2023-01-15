@@ -15,6 +15,7 @@ import apiCalls from "./apiCalls";
 const greeting = document.querySelector('#greeting');
 const oldTrips = document.querySelector('#pastDisplay')
 const upcomingTrips = document.querySelector('#upcomingDisplay')
+const spendingBreakdown = document.querySelector('#costBreakdown')
 
 
 // Global Variables
@@ -34,6 +35,7 @@ apiCalls.fetchAllData().then((data) => {
     greetUser();
     showOldTrips(2019);
     showUpcomingTrips(2020);
+    showSpending(2020);
   });
 
 // Functions
@@ -84,4 +86,23 @@ const showUpcomingTrips = (year) => {
     </div>
     `
   })
+}
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+
+  // These options are needed to round to whole numbers if that's what you want.
+  //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+  //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+});
+
+const showSpending = (year) => {
+  spendingBreakdown.innerHTML += `
+  <p id="flightTotal">Airfare: ${formatter.format(traveler.getTotalAirfare(year))}</p>
+  <p id="lodgingTotal">Lodging: ${formatter.format(traveler.getTotalLodging(year))}</p>
+  <p id="total">Total: ${formatter.format(traveler.getTotalCost(year))}</p>
+  <p id="agentFee">Agent Fee: 10%</p>
+  <p id="grandTotal">Grand Total: ${formatter.format(traveler.addAgentFee(year))}</p>
+  `
 }
