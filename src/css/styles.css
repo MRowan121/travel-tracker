@@ -67,7 +67,7 @@ i {
 }
 
 #d2 {
-  width: 65vw;
+  width: 60vw;
   border: 5px solid black;
   display: flex;
   flex-direction: column;
@@ -151,7 +151,7 @@ i {
 }
 
 #d3 {
-  width: 20vw;
+  width: 25vw;
   border: 5px solid black;
   padding: 30px 0px;
   display: flex;
