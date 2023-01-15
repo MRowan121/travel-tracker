@@ -97,7 +97,26 @@ i {
 #upcomingDisplay {
   height: 100%;
   max-width: 100%;
-  border: 3px solid black;
+  overflow-y: auto;
+}
+
+#upcomingDisplay > div {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#upcomingDisplay > div > img {
+  max-width: 50%;
+  object-fit: cover;
+}
+
+#upcomingDisplay > div > div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  justify-content: space-evenly;
 }
 
 #bottomMiddle {
