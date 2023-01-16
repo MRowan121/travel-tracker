@@ -12,5 +12,14 @@ const fetchApiUrl = (path) => {
       fetchApiUrl('destinations'),
     ])
   }
+
+  const deleteTrip = (id) => {
+    let url = `http://localhost:3001/api/v1/trips/${id}`
   
-  export default { fetchAllData };
+    fetch(url, {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"},
+    })
+  }
+
+  export { fetchApiUrl, fetchAllData, deleteTrip };
