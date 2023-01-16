@@ -10,7 +10,11 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler';
 import Trips from './Trips';
-import apiCalls from "./apiCalls";
+import {
+  fetchApiUrl,
+  fetchAllData,
+  deleteTrip,
+} from './apiCalls'
 import dayjs from "dayjs";
 
 // Query Selectors
@@ -41,17 +45,14 @@ let trip;
 
 // On-Load Functions
 
-apiCalls.fetchAllData().then((data) => {
+fetchAllData().then((data) => {
     travelerData = data[0].travelers;
     tripData = data[1].trips;
     destinationData = data[2].destinations;
     getRandomUser();
     greetUser();
-    showOldTrips(2019);
-    showUpcomingTrips(2020);
-    showSpending(2020);
-    addDestinationOptions(destinationData)
-    showPendingTrips();
+    displayTrips();
+    addDestinationOptions(destinationData);
   });
 
 // Functions
@@ -67,6 +68,13 @@ const getRandomUser = () => {
 const greetUser = () => {
   greeting.innerHTML = `Hi, ${traveler.getFirstName()}!`
 };
+
+const displayTrips = () => {
+  showOldTrips(2019)
+  showUpcomingTrips(2020)
+  showPendingTrips()
+  showSpending(2020)
+}
 
 const showOldTrips = (year) => {
   const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() <= year && trip.status === 'approved')
@@ -105,10 +113,6 @@ const showUpcomingTrips = (year) => {
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
-
-  // These options are needed to round to whole numbers if that's what you want.
-  //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-  //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
 const showSpending = (year) => {
@@ -130,17 +134,19 @@ const addDestinationOptions = (destinationData) => {
 
 newTripForm.addEventListener('submit', e => {
   e.preventDefault()
-
+  
   newVacay = {
-    id: Date.now(),
-    userId: Number(`${traveler.id}`),
-    destinationID: Number(`${destinationInput.value}`),
-    travelers: Number(`${travelerInput.value}`),
-    date:dayjs(`${dateInput.value}`).format('YYYY/MM/DD'),
-    duration: Number(`${durationInput.value}`),
-    status: 'pending',
+    id: tripData.length + 1,
+    userID: Number(traveler.id),
+    destinationID: Number(destinationInput.value),
+    travelers: Number(travelerInput.value),
+    date: dayjs(dateInput.value).format('YYYY/MM/DD'),
+    // date: dateInput.value.replaceAll("-","/"),
+    duration: Number(durationInput.value),
+    status: "pending",
     suggestedActivities: [ ]
   }
+
   trip = new Trips(newVacay)
   showConfirmation()
   displayNewTripCost(destinationData)
@@ -162,13 +168,11 @@ const displayNewTripCost = (destinationData) => {
   `
 }
 
-confirmTripBtn.addEventListener('click', e => {
-  e.preventDefault()
+confirmTripBtn.addEventListener('click', function() {
+
+  postTrip(trip)
 
   showConfirmation()
-  tripData.push(trip)
-  traveler.getTrips(tripData)
-  traveler.addDestinationInfo(destinationData)
 })
 
 const showPendingTrips = () => {
@@ -178,4 +182,24 @@ const showPendingTrips = () => {
     <img src="${trip.image}" alt="${trip.alt}"/>
     <figcaption>${trip.destinationName}</figcaption>`
   })
+}
+
+const postTrip = (trip) => {
+  let url = 'http://localhost:3001/api/v1/trips'
+
+  fetch(url, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(trip)
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(() => fetchApiUrl('trips')
+  .then(data => tripData = data.trips)
+  .then(() => {
+    traveler.getTrips(tripData)
+    traveler.addDestinationInfo(destinationData)
+    showPendingTrips()
+  }))
+  .catch(err => console.log('Error!', err))
 }
