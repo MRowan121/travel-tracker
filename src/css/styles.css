@@ -23,7 +23,7 @@ body {
 }
 
 #d1 {
-  width: 20vw;
+  width: 15vw;
   border: 5px solid black;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,7 @@ li {
   padding: 10px;
   transition: transform 750ms;
   will-change: transform;
+  font-size: small;
 }
 
 li:hover,
@@ -63,13 +64,6 @@ li:focus {
 
 i {
   padding: 5px;
-}
-
-#topDestinations {
-  height: 40%;
-  width: 75%;
-  border: 3px solid black;
-  list-style: none;
 }
 
 #d2 {
@@ -97,7 +91,26 @@ i {
 #upcomingDisplay {
   height: 100%;
   max-width: 100%;
-  border: 3px solid black;
+  overflow-y: auto;
+}
+
+#upcomingDisplay > div {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#upcomingDisplay > div > img {
+  max-width: 50%;
+  object-fit: cover;
+}
+
+#upcomingDisplay > div > div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  justify-content: space-evenly;
 }
 
 #bottomMiddle {
@@ -134,22 +147,44 @@ i {
 #pendingDisplay {
   height: 100%;
   max-width: 100%;
-  border: 3px solid black;
+  overflow-y: auto;
+}
+
+#pendingDisplay > img {
+  height: 90%;
+  max-width: 100%;
 }
 
 #d3 {
-  width: 20vw;
+  width: 25vw;
   border: 5px solid black;
   padding: 30px 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
-#totalCost,
-#booking {
-  border: 3px solid black;
+#newTripForm{
+  height: 50%;
   width: 75%;
-  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#newTripForm > label {
+  font-weight: bold;
+}
+
+#costDisplay {
+  height: 40%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+}
+
+#costBreakdown {
+  height: 100%;
+  border: 3px solid black;
 }

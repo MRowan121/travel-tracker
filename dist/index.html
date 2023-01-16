@@ -19,18 +19,13 @@
       <li><i class="fa-regular fa-comments"></i>Chat</li>
       <li><i class="fa-solid fa-gear"></i>Settings</li>
     </ul>
-    <ul id="topDestinations">
-      <li>Top Destination #1</li>
-      <li>Top Destination #2</li>
-      <li>Top Destination #3</li>
-    </ul>
   </aside>
   <main id="d2">
     <h1 id="greeting">Hello, Matt!</h1>
     <section id="upcomingTrips">
       <h2>Upcoming Trips</h2>
       <div id="upcomingDisplay">
-
+        
       </div>
     </section>
     <section id="bottomMiddle">
@@ -49,11 +44,31 @@
     </section>
   </main>
   <aside id="d3">
-    <div id="booking">
-      Book New Trip
-    </div>
-    <div id="totalCost">
-      Pie Chart of Cost
+    <form id="newTripForm">
+      <label>Destination:</label>
+      <input type="search" list="destinations"  id="destinationInput"></input>
+        <datalist id="destinations"></datalist>
+      <label>Departure Date:</label>
+      <input id="dateInput" type="date" required>
+      <label>Travelers:</label>
+      <input id="travelerInput" type="number" min="1" required>
+      <label>Duration:</label>
+      <input id="durationInput" type="number" min="1" required>
+      <button id="newTripBtn" type="submit">Submit</button>
+    </form>
+    <section class="confirmNewTrip hidden">
+      <div id="newTripBreakdown"></div>
+      <button id="confirmBtn" type="submit">Confirm Trip?</button>
+    </section>
+    <div id="costDisplay">
+      <h2><abbr>CY</abbr> Total</h2>
+      <div id="costBreakdown">
+        <p id="flightTotal"></p>
+        <p id="lodgingTotal"></p>
+        <p id="total"></p>
+        <p id="agentFee"></p>
+        <p id="grandTotal"></p>
+      </div>
     </div>
   </aside>
   

@@ -31,25 +31,33 @@ class Traveler {
         })
     };
 
-    getTotalLodging() {
-        const totalLodging = this.tripHistory.reduce((total, trip) => {
+    getTotalLodging(year) {
+        const filteredData = this.tripHistory.filter(trip => trip.date.year() === year)
+        const totalLodging = filteredData.reduce((total, trip) => {
             total += (trip.duration * trip.estimatedLodgingCostPerDay)
             return total
         }, 0)
         return totalLodging
     };
 
-    getTotalAirfare() {
-        const totalAirfare = this.tripHistory.reduce((total, trip) => {
-            total += trip.estimatedFlightCostPerPerson
+    getTotalAirfare(year) {
+        const filteredData = this.tripHistory.filter(trip => trip.date.year() === year)
+        const totalAirfare = filteredData.reduce((total, trip) => {
+            total += (trip.estimatedFlightCostPerPerson * trip.travelers)
             return total
         }, 0)
         return totalAirfare
     };
 
-    getTotalCost() {
-        const totalCost = (this.getTotalLodging() + this.getTotalAirfare()) * 1.10
+    getTotalCost(year) {
+        const totalCost = (this.getTotalLodging(year) + this.getTotalAirfare(year))
         return totalCost
+    }
+
+    addAgentFee(year) {
+        const totalCost = this.getTotalCost(year)
+        const grandTotal = totalCost * 1.10
+        return grandTotal
     }
 };
 
