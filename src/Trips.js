@@ -12,32 +12,27 @@ class Trips {
         this.suggestedActivities = tripDetails.suggestedActivities;
     };
 
-    getTravelerInfo(travelerData) {
-        travelerData.find(traveler => {
-            if(traveler.id === this.userID) {
-                this.travelerName = traveler.name
-            };
-        });
-    };
+    getTripFlight(destinationData) {
+        let flightCost = destinationData.find(destination => destination.id === this.destinationID)
+        let totalFlightCost = flightCost.estimatedFlightCostPerPerson * this.travelers
+        return totalFlightCost
+    }
 
-    getDestinationInfo(destinationData) {
-        destinationData.find(destination => {
-            if(destination.id === this.destinationID) {
-                this.destinationName = destination.destination;
-                this.estimatedFlightCostPerPerson = destination.estimatedFlightCostPerPerson;
-                this.estimatedLodgingCostPerDay = destination.estimatedLodgingCostPerDay;
-            };
-        });
-    };
+    getTripLodging(destinationData) {
+        let lodgingCost = destinationData.find(destination => destination.id === this.destinationID)
+        let totalLodgingCost = lodgingCost.estimatedLodgingCostPerDay * this.duration
+        return totalLodgingCost
+    }
 
-    getTotalLodging() {
-        return this.estimatedLodgingCostPerDay * this.duration
-    };
+    getTripCost(destinationData) {
+        let totalCost = this.getTripFlight(destinationData) + this.getTripLodging(destinationData)
+        return totalCost
+    }
 
-    getTotalCost() {
-        let totalLodging = this.getTotalLodging();
-        let totalCost = (totalLodging + this.estimatedFlightCostPerPerson) * 1.10;
-        return totalCost;
+    getGrandTotal(destinationData) {
+        let totalCost = this.getTripCost(destinationData);
+        let grandTotalCost = totalCost * 1.10;
+        return grandTotalCost;
     };
 };
 
