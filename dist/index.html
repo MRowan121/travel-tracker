@@ -46,15 +46,20 @@
   <aside id="d3">
     <form id="newTripForm">
       <label>Destination:</label>
-      <input type="text" required>
+      <input type="search" list="destinations"  id="destinationInput"></input>
+        <datalist id="destinations"></datalist>
       <label>Departure Date:</label>
-      <input type="date" required>
+      <input id="dateInput" type="date" required>
       <label>Travelers:</label>
-      <input type="number" min="0" required>
+      <input id="travelerInput" type="number" min="1" required>
       <label>Duration:</label>
-      <input type="number" min="0" required>
-      <input type="submit">
+      <input id="durationInput" type="number" min="1" required>
+      <button id="newTripBtn" type="submit">Submit</button>
     </form>
+    <section class="confirmNewTrip hidden">
+      <div id="newTripBreakdown"></div>
+      <button id="confirmBtn" type="submit">Confirm Trip?</button>
+    </section>
     <div id="costDisplay">
       <h2><abbr>CY</abbr> Total</h2>
       <div id="costBreakdown">
