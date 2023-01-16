@@ -147,7 +147,12 @@ i {
 #pendingDisplay {
   height: 100%;
   max-width: 100%;
-  border: 3px solid black;
+  overflow-y: auto;
+}
+
+#pendingDisplay > img {
+  height: 90%;
+  max-width: 100%;
 }
 
 #d3 {
