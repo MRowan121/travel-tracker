@@ -43,7 +43,7 @@ class Traveler {
     getTotalAirfare(year) {
         const filteredData = this.tripHistory.filter(trip => trip.date.year() === year)
         const totalAirfare = filteredData.reduce((total, trip) => {
-            total += trip.estimatedFlightCostPerPerson
+            total += (trip.estimatedFlightCostPerPerson * trip.travelers)
             return total
         }, 0)
         return totalAirfare
