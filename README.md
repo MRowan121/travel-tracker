@@ -16,7 +16,9 @@ This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Developm
 - The user will then be prompted to confirm the new trip after reviewing a cost summary of the trip
 ---------
 ## GIFs
-
+![loginGif](https://user-images.githubusercontent.com/110955503/212969029-c5e9d0b3-a3c5-4bbf-838e-957bd8e4e3d8.gif)
+![addTripGif](https://user-images.githubusercontent.com/110955503/212968547-9c82549e-31d5-4426-b201-b0d8c41c79b5.gif)
+![scrollingPageGif](https://user-images.githubusercontent.com/110955503/212968562-32ee8500-810e-4def-a04e-8ebc61eb5a17.gif)
 
 ---------
 ## Installation Instructions
