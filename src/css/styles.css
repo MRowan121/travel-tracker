@@ -3,7 +3,6 @@
   font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
-  color: white;
 }
 
 body {
@@ -12,12 +11,51 @@ body {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  justify-content: space-between;
   width: 100vw;
+  color: white;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  font-size: 5vh;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  background-color: #354f52;
+  justify-content: space-evenly;
+  align-items: center;
+  justify-items: center;
+  height: 50vh;
+  width: 25vw;
+  border-radius: 15px;
+  opacity: 75%;
+}
+
+#loginForm > input {
+  font-size: 3vh;
+  color: black;
+  width: 13vw;
+}
+
+#loginForm > button {
+  font-size: 3vh;
+  width: 10vw;
+  cursor: pointer;
 }
 
 .hidden {
   display: none!important;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: row;
 }
 
 #leftSide {
@@ -216,6 +254,10 @@ section.confirmNewTrip {
 
 fieldset {
   border: 0;
+}
+
+#newTripForm > input {
+  color: black;
 }
 
 button {
