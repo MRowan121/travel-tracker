@@ -15,42 +15,41 @@ body {
   color: white;
 }
 
+.hidden {
+  display: none!important;
+}
+
 .login-page {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-size: 5vh;
   justify-content: center;
   width: 100vw;
-  font-size: 5vh;
 }
 
 #loginForm {
+  align-items: center;
+  background-color: #354f52;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  background-color: #354f52;
-  justify-content: space-evenly;
-  align-items: center;
-  justify-items: center;
   height: 50vh;
-  width: 25vw;
-  border-radius: 15px;
+  justify-content: space-evenly;
+  justify-items: center;
   opacity: 75%;
+  width: 25vw;
 }
 
 #loginForm > input {
-  font-size: 3vh;
   color: black;
+  font-size: 3vh;
   width: 13vw;
 }
 
 #loginForm > button {
   font-size: 3vh;
   width: 10vw;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none!important;
 }
 
 .main-page {
@@ -65,11 +64,6 @@ body {
   justify-content: space-between;
   padding: 30px 0px;
   width: 12vw;
-}
-
-#userInfo {
-  height: 10%;
-  width: 75%;
 }
 
 #nav {
@@ -117,16 +111,16 @@ main {
   font-size: 5vh;
 }
 
-#upcomingTrips {
-  display: flex;
-  flex-direction: column;
-  height: 35vh;
-}
-
 h2 {
   font-family: "Lora", serif;
   font-size: 4vh;
   padding-bottom: 0.5vh;
+}
+
+#upcomingTrips {
+  display: flex;
+  flex-direction: column;
+  height: 35vh;
 }
 
 #upcomingDisplay {
@@ -223,14 +217,6 @@ h2 {
   width: 85%;
 }
 
-section.confirmNewTrip {
-  display: flex;
-  flex-direction: column;
-  font-size: 2.5vh;
-  height: 40vh;
-  justify-content: space-evenly;
-}
-
 #costDisplay {
   display: flex;
   flex-direction: column;
@@ -249,7 +235,7 @@ section.confirmNewTrip {
   font-size: 2.5vh;
   height: 40vh;
   justify-content: space-evenly;
-  width: 75%;
+  width: 85%;
 }
 
 fieldset {
@@ -260,8 +246,18 @@ fieldset {
   color: black;
 }
 
+section.confirmNewTrip {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5vh;
+  height: 40vh;
+  justify-content: space-evenly;
+  width: 85%;
+}
+
 button {
   font-size: 2.5vh;
   font-family: "Montserrat", sans-serif;
   color: #2f3e46;
+  cursor: pointer;
 }

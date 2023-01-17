@@ -147,31 +147,41 @@ describe("traveler", () => {
     it("should have a method that returns all of a users trips", () => {
         traveler3.getTrips(tripData)
         expect(traveler3.tripHistory.length).to.equal(2)
-        expect(traveler3.tripHistory[0].date.date()).to.equal(22)
+        expect(traveler3.tripHistory[0].date.date()).to.equal(30)
     });
 
     it("should be able to add destination details to each trip" ,() => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
-        expect(traveler3.tripHistory[0].destinationName).to.equal('Rome, Italy')
-        expect(traveler3.tripHistory[1].estimatedFlightCostPerPerson).to.equal(200)
+        expect(traveler3.tripHistory[0].destinationName).to.equal('New York, New York')
+        expect(traveler3.tripHistory[1].estimatedFlightCostPerPerson).to.equal(650)
     });
 
     it("should be able to calc total lodging", () => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
-        expect(traveler3.getTotalLodging()).to.equal(3455)
+        expect(traveler3.getTotalLodging()).to.equal(0)
+        expect(traveler3.getTotalLodging(2022)).to.equal(1530)
     });
 
     it("should be able to calc total airfare", () => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
-        expect(traveler3.getTotalAirfare()).to.equal(850)
+        expect(traveler3.getTotalAirfare()).to.equal(0)
+        expect(traveler3.getTotalAirfare(2022)).to.equal(2600)
     });
 
-    it("should be able to calc total cost with 10% agent fee", () => {
+    it("should be able to calc total cost", () => {
         traveler3.getTrips(tripData)
         traveler3.addDestinationInfo(destinationData)
-        expect(traveler3.getTotalCost()).to.equal(4735.5)
+        expect(traveler3.getTotalCost()).to.equal(0)
+        expect(traveler3.getTotalCost(2022)).to.equal(4130)
     });
+
+    it("should be able to add a 10% fee to total cost", () => {
+        traveler3.getTrips(tripData)
+        traveler3.addDestinationInfo(destinationData)
+        expect(traveler3.addAgentFee()).to.equal(0)
+        expect(traveler3.addAgentFee(2022)).to.equal(4543)
+    })
 })

@@ -127,10 +127,8 @@ describe("trips", () => {
     });
 
     it("should have a date", () => {
-        expect(trip1.date.month()+1).to.equal(9)
-        expect(trip1.date.date()).to.equal(16)
-        expect(trip1.date.year()).to.equal(2022)
-        expect(trip2.date.month()+1).to.equal(10)
+        expect(trip1.date).to.equal('2022/09/16')
+        expect(trip2.date).to.equal('2022/10/04')
     });
 
     it("should have a duration", () => {
@@ -145,33 +143,19 @@ describe("trips", () => {
         expect(trip1.suggestedActivities).to.deep.equal([])
     });
 
-    it("should be able to return traveler name", () => {
-        trip3.getTravelerInfo(travelerData)
-        expect(trip3.travelerName).to.equal('Sibby Dawidowit.skipsch')
+    it("should be able to get total flight cost for a trip", () => {
+        expect(trip3.getTripFlight(destinationData)).to.equal(2600)
     });
 
-    it("should be able to return the name of the destination", () => {
-        trip3.getDestinationInfo(destinationData)
-        expect(trip3.destinationName).to.equal('Rome, Italy')
+    it("should be able to get total lodging cost for a trip", () => {
+        expect(trip3.getTripLodging(destinationData)).to.equal(1530)
     });
 
-    it("should be able to get flight cost per person", () => {
-        trip3.getDestinationInfo(destinationData)
-        expect(trip3.estimatedFlightCostPerPerson).to.equal(650)
+    it("should be able to get total cost for a trip", () => {
+        expect(trip3.getTripCost(destinationData)).to.equal(4130)
     });
 
-    it("should be able to return lodging per person per day", () => {
-        trip3.getDestinationInfo(destinationData)
-        expect(trip3.estimatedLodgingCostPerDay).to.equal(90)
-    });
-
-    it("should be able to calc total cost of lodging per person", () => {
-        trip3.getDestinationInfo(destinationData)
-        expect(trip3.getTotalLodging()).to.equal(1530)
-    });
-
-    it("should be able to calc total cost per person + 10% agent fee", () => {
-        trip3.getDestinationInfo(destinationData)
-        expect(trip3.getTotalCost()).to.equal(2398)
+    it("should be able to add 10% to the total cost for a trip", () => {
+        expect(trip3.getGrandTotal(destinationData)).to.equal(4543)
     });
 });
