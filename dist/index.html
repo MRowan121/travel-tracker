@@ -10,69 +10,79 @@
   <title>Travel Tracker</title>
 </head>
 <body>
-  <aside id="leftSide">
-    <ul id="nav">
-      <li><i class="fa-solid fa-house"></i>Dashboard</li>
-      <li><i class="fa-regular fa-calendar"></i>Calendar</li>
-      <li><i class="fa-solid fa-clock-rotate-left"></i>History</li>
-      <li><i class="fa-regular fa-comments"></i>Chat</li>
-      <li><i class="fa-solid fa-gear"></i>Settings</li>
-    </ul>
-  </aside>
-  <main>
-    <h1 id="greeting">Hello, Matt!</h1>
-    <section id="upcomingTrips">
-      <h2>Upcoming Trips</h2>
-      <div id="upcomingDisplay"></div>
-    </section>
-    <section id="bottomMiddle">
-      <div id="pastTrips">
-        <h2>Past Trips</h2>
-        <div id="pastDisplay"></div>
-      </div>
-      <div id="pendingTrips">
-        <h2>Pending Trips</h2>
-        <div id="pendingDisplay"></div>
-      </div>
-    </section>
-  </main>
-  <aside id="rightSide">
-    <div id="rightIcons">
-      <p><i class="fa-solid fa-magnifying-glass">Search</i></p>
-      <i class="fa-regular fa-bell"></i>
-    </div>
-    <div id="costDisplay">
-      <h2><abbr>CY</abbr> Total</h2>
-      <div id="costBreakdown"></div>
-    </div>
-    <form id="newTripForm">
-      <h2>Book A Trip</h2>
-      <fieldset>
-        <section>
-          <label for="destinationInput">Destination:</label>
-          <input type="search" list="destinations"  id="destinationInput" name="destinations"></input>
-          <datalist id="destinations"></datalist>
-        </section>
-        <section>
-          <label for="dateInput">Departure Date:</label>
-          <input id="dateInput" type="date" required>
-        </section>
-        <section>
-          <label for="travelerInput">Travelers:</label>
-          <input id="travelerInput" type="number" min="1" required>
-        </section>
-        <section>
-          <label for="durationInput">Duration:</label>
-          <input id="durationInput" type="number" min="1" required>
-        </section>
-        <button id="newTripBtn" type="submit">Submit</button>
-      </fieldset>
+  <section class="login-page">
+    <form id="loginForm">
+        <h1>Login</h1>
+        <input id="usernameField" type="text" placeholder="Username..." required>
+        <input id="passwordField" type="password" placeholder="Password..." required>
+        <button id="loginBtn" type="submit">Sign In!</button>
     </form>
-    <section class="confirmNewTrip hidden">
-      <div id="newTripBreakdown"></div>
-      <button id="confirmBtn" type="submit">Confirm Trip?</button>
-    </section>
-  </aside>
+  </section>
+  <section class="main-page hidden">
+    <aside id="leftSide">
+      <ul id="nav">
+        <li><i class="fa-solid fa-house"></i>Dashboard</li>
+        <li><i class="fa-regular fa-calendar"></i>Calendar</li>
+        <li><i class="fa-solid fa-clock-rotate-left"></i>History</li>
+        <li><i class="fa-regular fa-comments"></i>Chat</li>
+        <li><i class="fa-solid fa-gear"></i>Settings</li>
+      </ul>
+    </aside>
+    <main>
+      <h1 id="greeting">Hello, Matt!</h1>
+      <section id="upcomingTrips">
+        <h2>Upcoming Trips</h2>
+        <div id="upcomingDisplay"></div>
+      </section>
+      <section id="bottomMiddle">
+        <div id="pastTrips">
+          <h2>Past Trips</h2>
+          <div id="pastDisplay"></div>
+        </div>
+        <div id="pendingTrips">
+          <h2>Pending Trips</h2>
+          <div id="pendingDisplay"></div>
+        </div>
+      </section>
+    </main>
+    <aside id="rightSide">
+      <div id="rightIcons">
+        <p><i class="fa-solid fa-magnifying-glass">Search</i></p>
+        <i class="fa-regular fa-bell"></i>
+      </div>
+      <div id="costDisplay">
+        <h2><abbr>CY</abbr> Total</h2>
+        <div id="costBreakdown"></div>
+      </div>
+      <form id="newTripForm">
+        <h2>Book A Trip</h2>
+        <fieldset>
+          <section>
+            <label for="destinationInput">Destination:</label>
+            <input type="search" list="destinations"  id="destinationInput" name="destinations"></input>
+            <datalist id="destinations"></datalist>
+          </section>
+          <section>
+            <label for="dateInput">Departure Date:</label>
+            <input id="dateInput" type="date" required>
+          </section>
+          <section>
+            <label for="travelerInput">Travelers:</label>
+            <input id="travelerInput" type="number" min="1" required>
+          </section>
+          <section>
+            <label for="durationInput">Duration:</label>
+            <input id="durationInput" type="number" min="1" required>
+          </section>
+          <button id="newTripBtn" type="submit">Submit</button>
+        </fieldset>
+      </form>
+      <section class="confirmNewTrip hidden">
+        <div id="newTripBreakdown"></div>
+        <button id="confirmBtn" type="submit">Confirm Trip?</button>
+      </section>
+    </aside>
+  </section>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
