@@ -158,79 +158,41 @@ const checkPassword = () => {
 
 // DOM Updates
 
+const tripDisplay = (display, trip) => {
+  display.innerHTML += `
+  <div>
+  <img src="${trip.image}" alt="${trip.alt}"/>
+  <div>
+  <p><strong>Destination Name:</strong> 
+  <br>
+  <em>${trip.destinationName}</em></p>
+  <p><strong>Departure Date:</strong> 
+  <br>
+  <em>${trip.date.format('MM/DD/YYYY')}</em></p>
+  <p><strong>Duration:</strong> 
+  <br>
+  <em>${trip.duration} days</em></p>
+  <p><strong>Travelers:</strong> 
+  <br>
+  <em>${trip.travelers}</em></p>
+  </div>
+  </div>
+  `
+};
+
 const showUpcomingTrips = (year) => {
   const upcomingArray = traveler.tripHistory.filter(trip => trip.date.year() >= year && trip.status === 'approved')
-  upcomingArray.forEach(trip => {
-    upcomingTrips.innerHTML += `
-    <div id="upcomingTripInfo">
-    <img src="${trip.image}" alt="${trip.alt}"/>
-    <div id="upcomingDetails">
-    <p><strong>Destination Name:</strong> 
-    <br>
-    <em>${trip.destinationName}</em></p>
-    <p><strong>Departure Date:</strong> 
-    <br>
-    <em>${trip.date.format('MM/DD/YYYY')}</em></p>
-    <p><strong>Duration:</strong> 
-    <br>
-    <em>${trip.duration} days</em></p>
-    <p><strong>Travelers:</strong> 
-    <br>
-    <em>${trip.travelers}</em></p>
-    </div>
-    </div>
-    `
-  })
+  upcomingArray.forEach(trip => tripDisplay(upcomingTrips, trip))
 };
 
 const showOldTrips = (year) => {
   const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() <= year && trip.status === 'approved')
-  oldTripArray.forEach(trip => {
-    oldTrips.innerHTML += `
-    <div id="oldTripInfo">
-    <img src="${trip.image}" alt="${trip.alt}"/>
-    <div id="oldDetails">
-    <p><strong>Destination Name:</strong> 
-    <br>
-    <em>${trip.destinationName}</em></p>
-    <p><strong>Departure Date:</strong> 
-    <br>
-    <em>${trip.date.format('MM/DD/YYYY')}</em></p>
-    <p><strong>Duration:</strong> 
-    <br>
-    <em>${trip.duration} days</em></p>
-    <p><strong>Travelers:</strong> 
-    <br>
-    <em>${trip.travelers}</em></p>
-    </div>
-    </div>
-    `
-  })
+  oldTripArray.forEach(trip => tripDisplay(oldTrips, trip))
 };
 
 const showPendingTrips = () => {
   const pendingTripArray = traveler.tripHistory.filter(trip => trip.status === 'pending')
-  pendingTripArray.forEach(trip => {
-    pendingTrips.innerHTML += `
-    <div id="pendingTripInfo">
-    <img src="${trip.image}" alt="${trip.alt}"/>
-    <div id="pendingDetails">
-    <p><strong>Destination Name:</strong> 
-    <br>
-    <em>${trip.destinationName}</em></p>
-    <p><strong>Departure Date:</strong> 
-    <br>
-    <em>${trip.date.format('MM/DD/YYYY')}</em></p>
-    <p><strong>Duration:</strong> 
-    <br>
-    <em>${trip.duration} days</em></p>
-    <p><strong>Travelers:</strong> 
-    <br>
-    <em>${trip.travelers}</em></p>
-    </div>
-    </div>
-    `
-  })
+  pendingTripArray.forEach(trip => tripDisplay(pendingTrips, trip))
 };
 
 const showSpending = (year) => {
