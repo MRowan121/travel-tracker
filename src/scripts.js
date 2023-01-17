@@ -32,7 +32,11 @@ const newTripConfirmation = document.querySelector('.confirmNewTrip')
 const newTripBreakdown = document.querySelector('#newTripBreakdown')
 const confirmTripBtn = document.querySelector('#confirmBtn')
 const pendingTrips = document.querySelector('#pendingDisplay')
-
+const loginPage = document.querySelector('.login-page')
+const homescreen = document.querySelector('.main-page')
+const loginForm = document.querySelector('#loginForm')
+const usernameField = document.querySelector('#usernameField')
+const passwordField = document.querySelector('#passwordField')
 
 // Global Variables
 
@@ -49,10 +53,6 @@ fetchAllData().then((data) => {
   travelerData = data[0].travelers;
   tripData = data[1].trips;
   destinationData = data[2].destinations;
-  getRandomUser();
-  greetUser();
-  displayTrips();
-  addDestinationOptions(destinationData);
 });
 
 // Functions
@@ -62,6 +62,7 @@ const getRandomUser = () => {
   traveler = new Traveler(travelerData[getRandomIndex(travelerData)])
   traveler.getTrips(tripData)
   traveler.addDestinationInfo(destinationData)
+  console.log(traveler)
 };
 
 const greetUser = () => {
@@ -73,9 +74,9 @@ const greetUser = () => {
 };
 
 const displayTrips = () => {
-  showOldTrips(2020)
-  showUpcomingTrips(2021)
-  showSpending(2021)
+  showOldTrips(2019)
+  showUpcomingTrips(2020)
+  showSpending(2020)
   showPendingTrips()
 };
 
@@ -175,6 +176,11 @@ function showConfirmation() {
   newTripConfirmation.classList.toggle('hidden');
 };
 
+function showDashboard() {
+  loginPage.classList.toggle('hidden');
+  homescreen.classList.toggle('hidden');
+};
+
 const displayNewTripCost = (destinationData) => {
   newTripBreakdown.innerHTML = ''
   newTripBreakdown.innerHTML += `
@@ -236,4 +242,32 @@ const postTrip = (trip) => {
     showPendingTrips()
   }))
   .catch(err => console.log('Error!', err))
+}
+
+loginForm.addEventListener('submit', e => {
+  e.preventDefault()
+  checkPassword()
+})
+
+const getUserData = () => {
+  const returningUser = 
+  Number(usernameField.value.slice(-2))
+  const returningUserID = travelerData.map(person => person.id).indexOf(returningUser)
+
+  traveler = new Traveler(travelerData[returningUserID])
+  traveler.getTrips(tripData)
+  traveler.addDestinationInfo(destinationData)
+  
+  greetUser();
+  displayTrips();
+  addDestinationOptions(destinationData)
+}
+
+const checkPassword = () => {
+  if(passwordField.value === 'travel') {
+    getUserData()
+    showDashboard()
+  } else {
+    alert('Please check your password and try again')
+  }
 }
