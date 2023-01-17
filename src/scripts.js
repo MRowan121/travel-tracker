@@ -46,14 +46,14 @@ let trip;
 // On-Load Functions
 
 fetchAllData().then((data) => {
-    travelerData = data[0].travelers;
-    tripData = data[1].trips;
-    destinationData = data[2].destinations;
-    getRandomUser();
-    greetUser();
-    displayTrips();
-    addDestinationOptions(destinationData);
-  });
+  travelerData = data[0].travelers;
+  tripData = data[1].trips;
+  destinationData = data[2].destinations;
+  getRandomUser();
+  greetUser();
+  displayTrips();
+  addDestinationOptions(destinationData);
+});
 
 // Functions
 const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
@@ -62,26 +62,45 @@ const getRandomUser = () => {
   traveler = new Traveler(travelerData[getRandomIndex(travelerData)])
   traveler.getTrips(tripData)
   traveler.addDestinationInfo(destinationData)
-  console.log(traveler)
-}
+};
 
 const greetUser = () => {
-  greeting.innerHTML = `Hi, ${traveler.getFirstName()}!`
+  greeting.innerHTML = `
+  Hi ${traveler.getFirstName()},
+  <br>
+  Welcome Back!
+  `
 };
 
 const displayTrips = () => {
-  showOldTrips(2019)
-  showUpcomingTrips(2020)
+  showOldTrips(2020)
+  showUpcomingTrips(2021)
+  showSpending(2021)
   showPendingTrips()
-  showSpending(2020)
-}
+};
 
 const showOldTrips = (year) => {
   const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() <= year && trip.status === 'approved')
   oldTripArray.forEach(trip => {
     oldTrips.innerHTML += `
+    <div id="oldTripInfo">
     <img src="${trip.image}" alt="${trip.alt}"/>
-    <figcaption>${trip.destinationName}</figcaption>`
+    <div id="oldDetails">
+    <p><strong>Destination Name:</strong> 
+    <br>
+    <em>${trip.destinationName}</em></p>
+    <p><strong>Departure Date:</strong> 
+    <br>
+    <em>${trip.date.format('MM/DD/YYYY')}</em></p>
+    <p><strong>Duration:</strong> 
+    <br>
+    <em>${trip.duration} days</em></p>
+    <p><strong>Travelers:</strong> 
+    <br>
+    <em>${trip.travelers}</em></p>
+    </div>
+    </div>
+    `
   })
 }
 
@@ -141,7 +160,6 @@ newTripForm.addEventListener('submit', e => {
     destinationID: Number(destinationInput.value),
     travelers: Number(travelerInput.value),
     date: dayjs(dateInput.value).format('YYYY/MM/DD'),
-    // date: dateInput.value.replaceAll("-","/"),
     duration: Number(durationInput.value),
     status: "pending",
     suggestedActivities: [ ]
@@ -160,6 +178,7 @@ function showConfirmation() {
 const displayNewTripCost = (destinationData) => {
   newTripBreakdown.innerHTML = ''
   newTripBreakdown.innerHTML += `
+  <h2>Cost Breakdown</h2>
   <p id="newFlightTotal">Airfare: ${formatter.format(trip.getTripFlight(destinationData))}</p>
   <p id="newLodgingTotal">Lodging: ${formatter.format(trip.getTripLodging(destinationData))}</p>
   <p id="newTotal">Total: ${formatter.format(trip.getTripCost(destinationData))}</p>
@@ -169,9 +188,8 @@ const displayNewTripCost = (destinationData) => {
 }
 
 confirmTripBtn.addEventListener('click', function() {
-
   postTrip(trip)
-
+  newTripForm.reset()
   showConfirmation()
 })
 
@@ -179,8 +197,24 @@ const showPendingTrips = () => {
   const pendingTripArray = traveler.tripHistory.filter(trip => trip.status === 'pending')
   pendingTripArray.forEach(trip => {
     pendingTrips.innerHTML += `
+    <div id="pendingTripInfo">
     <img src="${trip.image}" alt="${trip.alt}"/>
-    <figcaption>${trip.destinationName}</figcaption>`
+    <div id="pendingDetails">
+    <p><strong>Destination Name:</strong> 
+    <br>
+    <em>${trip.destinationName}</em></p>
+    <p><strong>Departure Date:</strong> 
+    <br>
+    <em>${trip.date.format('MM/DD/YYYY')}</em></p>
+    <p><strong>Duration:</strong> 
+    <br>
+    <em>${trip.duration} days</em></p>
+    <p><strong>Travelers:</strong> 
+    <br>
+    <em>${trip.travelers}</em></p>
+    </div>
+    </div>
+    `
   })
 }
 
