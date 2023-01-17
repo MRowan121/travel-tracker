@@ -159,7 +159,7 @@ const checkPassword = () => {
 // DOM Updates
 
 const showUpcomingTrips = (year) => {
-  const upcomingArray = traveler.tripHistory.filter(trip => trip.date.year() === year && trip.status === 'approved')
+  const upcomingArray = traveler.tripHistory.filter(trip => trip.date.year() >= year && trip.status === 'approved')
   upcomingArray.forEach(trip => {
     upcomingTrips.innerHTML += `
     <div id="upcomingTripInfo">
