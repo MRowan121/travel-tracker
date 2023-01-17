@@ -158,13 +158,13 @@ const checkPassword = () => {
 
 // DOM Updates
 
-const showOldTrips = (year) => {
-  const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() <= year && trip.status === 'approved')
-  oldTripArray.forEach(trip => {
-    oldTrips.innerHTML += `
-    <div id="oldTripInfo">
+const showUpcomingTrips = (year) => {
+  const upcomingArray = traveler.tripHistory.filter(trip => trip.date.year() === year && trip.status === 'approved')
+  upcomingArray.forEach(trip => {
+    upcomingTrips.innerHTML += `
+    <div id="upcomingTripInfo">
     <img src="${trip.image}" alt="${trip.alt}"/>
-    <div id="oldDetails">
+    <div id="upcomingDetails">
     <p><strong>Destination Name:</strong> 
     <br>
     <em>${trip.destinationName}</em></p>
@@ -183,13 +183,13 @@ const showOldTrips = (year) => {
   })
 };
 
-const showUpcomingTrips = (year) => {
-  const upcomingArray = traveler.tripHistory.filter(trip => trip.date.year() === year && trip.status === 'approved')
-  upcomingArray.forEach(trip => {
-    upcomingTrips.innerHTML += `
-    <div id="upcomingTripInfo">
+const showOldTrips = (year) => {
+  const oldTripArray = traveler.tripHistory.filter(trip => trip.date.year() <= year && trip.status === 'approved')
+  oldTripArray.forEach(trip => {
+    oldTrips.innerHTML += `
+    <div id="oldTripInfo">
     <img src="${trip.image}" alt="${trip.alt}"/>
-    <div id="upcomingDetails">
+    <div id="oldDetails">
     <p><strong>Destination Name:</strong> 
     <br>
     <em>${trip.destinationName}</em></p>
